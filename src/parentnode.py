@@ -6,15 +6,14 @@ class ParentNode(HTMLNode):
         self.children = children
         
     def to_html(self):
-        child_html = ""
         if self.tag is None:
             raise ValueError("Instance must contain a tag")
         if self.children is None:
             raise ValueError("Object has no children")
-        else:
-            for child in self.children:
-               child_html = child_html + child.to_html()
-            return f"<{self.tag}>{child_html}</{self.tag}>"
+        child_html = ""
+        for child in self.children:
+            child_html = child_html + child.to_html()
+        return f"<{self.tag}>{child_html}</{self.tag}>"
         
     def props_to_html(self):
         finished_html = ""
